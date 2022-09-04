@@ -146,11 +146,11 @@ def choose_word(file_path):
     # split the file to get animals mame
         words = words_file.read().strip().split(", ")
     return random.choice(words)
-    read_file = file_path.read()
+
 
 def main():
     opening_of_the_game()
-    secret_word = choose_word(r'C:\Users\gaby2\Desktop\PYTHON LEARNING\human game\human game missions\findme.txt')
+    secret_word = choose_word(r'{findme.txt}')
     old_letters_guessed = []
     num_of_tries = 1
     while num_of_tries < 7:
@@ -159,7 +159,7 @@ def main():
         letter_guessed = input('choose a letter:')
         bool = check_valid_input(letter_guessed, old_letters_guessed)
         try_update_letter_guessed(letter_guessed, old_letters_guessed)
-        if not check_valid_input(letter_guessed, old_letters_guessed):
+        if not bool:
             continue
         if check_win(secret_word, old_letters_guessed):
             print(f"{Fore.BLACK}{Back.YELLOW}you won")
